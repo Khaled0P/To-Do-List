@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <script
+      src="https://kit.fontawesome.com/172eafd941.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="" alt="to do logo" />
+      <h1>To-do list</h1>
+    </header>
+    <section class="mainContainer">
+      <section class="projectsList">
+        <!-- default projects -->
+        <div class="defaultProjects">
+          <button class="projectBtn active" id="inbox">
+            <i class="fas fa-inbox" aria-hidden="true"></i> Inbox
+          </button>
+          <button class="projectBtn" id="today">
+            <i class="fas fa-calendar-day" aria-hidden="true"></i> Today
+          </button>
+          <button class="projectBtn" id="thisWeek">
+            <i class="fas fa-calendar-week" aria-hidden="true"></i> This Week
+          </button>
+        </div>
+        <!-- User Projects -->
+        <div class="userProjects">
+          <h1>Projects</h1>
+          <button class="projectBtn" id="addProject">
+            <i class="fas fa-plus" aria-hidden="true"></i> Add project
+          </button>
+        </div>
+      </section>
+    </section>
+  </body>
+</html>

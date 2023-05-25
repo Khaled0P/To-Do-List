@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: max-content auto;
+}
+
+header {
+    padding: 10px;
+    background-color: #333333;
+
+    display: flex;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 2.7rem;
+    font-weight: bold;
+    color: rgb(231, 231, 225);
+}
+
+.logo {
+    width: 8%;
+}
+
+
+.mainContainer {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+/******** projects List*********/
+
+.projectsList {
+    background-color: #dddddd;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.defaultProjects,
+.userProjects {
+    padding: 2em 1em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userProjects h1 {
+    margin-bottom: .8em;
+}
+
+.projectBtn {
+    margin: 5px;
+    padding: 10px 20px;
+    width: 90%;
+    background-color: #dddddd;
+    border: none;
+    font-size: 1em;
+    border-radius: 8px;
+    text-align: start;
+}
+
+.projectBtn:hover {
+    cursor: pointer;
+    background-color: rgba(204, 204, 204, .5);
+}
+
+.projectBtn.active {
+    background-color: rgb(180, 180, 180);
+}
+
+.projectBtn i {
+    margin-right: 4px;
+}

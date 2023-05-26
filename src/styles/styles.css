@@ -58,7 +58,8 @@ header h1 {
     margin-bottom: .8em;
 }
 
-.projectBtn {
+.projectBtn,
+.addTaskBtn {
     margin: 5px;
     padding: 10px 20px;
     width: 90%;
@@ -69,7 +70,8 @@ header h1 {
     text-align: start;
 }
 
-.projectBtn:hover {
+.projectBtn:hover,
+.addTaskBtn:hover {
     cursor: pointer;
     background-color: rgba(204, 204, 204, .5);
 }
@@ -80,4 +82,42 @@ header h1 {
 
 .projectBtn i {
     margin-right: 4px;
+}
+
+/************ Tasks pages *************/
+
+.tasksContainer {
+    padding: 2em;
+}
+
+.addTaskBtn {
+    background-color: white;
+}
+
+form {
+    display: none;
+}
+
+form input,
+form button {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+form button:hover {
+    cursor: pointer;
+}
+
+.card {
+    padding: 5px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 5px;
+}
+
+.card p:first-child {
+    font-size: 1.5rem;
+    color: #4db3f1;
 }

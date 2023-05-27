@@ -110,12 +110,13 @@ form button:hover {
 
 .card {
     padding: 10px;
+    border-radius: 8px;
     position: relative;
 
     display: flex;
     flex-direction: column;
     gap: 5px;
-    margin: 5px;
+    margin: 10px;
 }
 
 .card p:first-child {
@@ -123,10 +124,20 @@ form button:hover {
     color: #195abd;
 }
 
+.card>p {
+    margin-left: 15px;
+}
+
 .card .removeBtn {
     position: absolute;
-    top: 20px;
-    left: -10px;
-    padding: 5px;
+    top: 15px;
+    left: 2px;
     cursor: pointer;
+    appearance: none;
+    font: inherit;
+    width: 1.15em;
+    height: 1.15em;
+    background-color: rgb(255, 255, 255);
+    border: .1px solid black;
+    border-radius: 50%;
 }

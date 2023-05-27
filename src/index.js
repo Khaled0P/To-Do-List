@@ -15,6 +15,7 @@ const form = document.querySelector('form');
 const title = document.getElementById('title');
 const description = document.getElementById('description');
 const date = document.getElementById('date');
+const priority = document.getElementById('priority');
 const taskBtn = document.getElementById('submit');
 const cancelBtn = document.getElementById('cancel');
 
@@ -29,7 +30,12 @@ addTask.addEventListener('click', () => {
 
 taskBtn.addEventListener('click', function () {
   const dataBase = inBox().inBoxData;
-  const task = new Task(title.value, description.value, date.value);
+  const task = new Task(
+    title.value,
+    description.value,
+    date.value,
+    priority.value
+  );
 
   //store task in database in html format
   const taskElement = addData(task);

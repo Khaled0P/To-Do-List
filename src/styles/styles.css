@@ -109,7 +109,8 @@ form button:hover {
 }
 
 .card {
-    padding: 5px;
+    padding: 10px;
+    position: relative;
 
     display: flex;
     flex-direction: column;
@@ -119,5 +120,13 @@ form button:hover {
 
 .card p:first-child {
     font-size: 1.5rem;
-    color: #4db3f1;
+    color: #195abd;
+}
+
+.card .removeBtn {
+    position: absolute;
+    top: 20px;
+    left: -10px;
+    padding: 5px;
+    cursor: pointer;
 }

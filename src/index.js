@@ -3,18 +3,20 @@ import logoImage from './assets/logo.png';
 import Task from './tasksComponent';
 import inBox from './InBox';
 import addData, { displayTasks } from './addData';
+import { cancelForm } from './remove';
 
 const logo = document.querySelector('.logo');
 logo.src = logoImage;
 
 const tasksContainer = document.getElementById('tasksContainer');
-const taskBtn = document.getElementById('submit');
 
 //form data
 const form = document.querySelector('form');
 const title = document.getElementById('title');
 const description = document.getElementById('description');
 const date = document.getElementById('date');
+const taskBtn = document.getElementById('submit');
+const cancelBtn = document.getElementById('cancel');
 
 const inBoxContainer = inBox().inBox;
 tasksContainer.insertBefore(inBoxContainer, form);
@@ -43,3 +45,6 @@ taskBtn.addEventListener('click', function () {
     input.value = '';
   });
 });
+
+//remove form
+cancelForm(cancelBtn, form, addTask);

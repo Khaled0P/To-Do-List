@@ -81,7 +81,13 @@ cancelForm(cancelBtn, form, addTask);
 //InBox tab display
 inBoxBtn.addEventListener('click', () => {
   let switchToInBox = switchTab.bind(inBoxBtn);
-  switchToInBox(inBox(), projects, tasksContainer, localTasks, addTask);
+  switchToInBox(
+    inBox(),
+    projects,
+    tasksContainer,
+    localStorageTasks(),
+    addTask
+  );
 });
 //today tab display
 todayBtn.addEventListener('click', () => {

@@ -13,3 +13,10 @@ export function today() {
   today.classList.add('today');
   return { today, todayDatabase };
 }
+
+export function thisWeek() {
+  const weekDatabase = [];
+  const thisWeek = document.createElement('div');
+  thisWeek.classList.add('today');
+  return { thisWeek, weekDatabase };
+}

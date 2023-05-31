@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const isToday = require('date-fns/isToday');
+const isThisWeek = require('date-fns/isThisWeek');
 
 module.exports = {
   mode: 'development',

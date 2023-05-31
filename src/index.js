@@ -1,10 +1,13 @@
 import './styles/styles.css';
 import logoImage from './assets/logo.png';
 import Task from './tasksComponent';
-import inBox, { today, todayDatabase } from './InBox';
+import inBox, { today, thisWeek } from './InBox';
 import addData, { displayTasks, getFirstChild } from './addData';
 import { cancelForm } from './remove';
-import localStorageTasks, { todayTasks } from './localStorageProps';
+import localStorageTasks, {
+  thisWeekTasks,
+  todayTasks,
+} from './localStorageProps';
 import parseISO from 'date-fns/parseISO';
 import { switchTab } from './switchTabs';
 
@@ -13,7 +16,9 @@ logo.src = logoImage;
 
 //tasks tabs
 const projects = document.querySelectorAll('.projectBtn');
+const inBoxBtn = document.getElementById('inbox');
 const todayBtn = document.getElementById('today');
+const thisWeekBtn = document.getElementById('thisWeek');
 
 const tasksContainer = document.getElementById('tasksContainer');
 const addTask = document.querySelector('.addTaskBtn');
@@ -73,8 +78,18 @@ taskBtn.addEventListener('click', function () {
 //remove form
 cancelForm(cancelBtn, form, addTask);
 
+//InBox tab display
+inBoxBtn.addEventListener('click', () => {
+  let switchToInBox = switchTab.bind(inBoxBtn);
+  switchToInBox(inBox(), projects, tasksContainer, localTasks, addTask);
+});
 //today tab display
 todayBtn.addEventListener('click', () => {
   let switchToTab = switchTab.bind(todayBtn);
   switchToTab(today(), projects, tasksContainer, todayTasks(), addTask);
+});
+//week tab display
+thisWeekBtn.addEventListener('click', () => {
+  let switchToTab = switchTab.bind(thisWeekBtn);
+  switchToTab(thisWeek(), projects, tasksContainer, thisWeekTasks(), addTask);
 });

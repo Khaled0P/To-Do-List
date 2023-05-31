@@ -1,5 +1,6 @@
 import { parseISO } from 'date-fns';
 import isToday from 'date-fns/isToday';
+import isThisWeek from 'date-fns/isThisWeek';
 
 //fetch tasks from local storage if exists
 export default function localStorageTasks() {
@@ -34,4 +35,18 @@ export function todayTasks() {
   //   todayTasks = [];
   // }
   return todayTasks;
+}
+
+export function thisWeekTasks() {
+  let weekTasks = [];
+  if (localStorage.getItem('taskDatabase')) {
+    let database = JSON.parse(localStorage.getItem('taskDatabase'));
+    database.forEach((ele) => {
+      if (isThisWeek(parseISO(ele.date))) {
+        weekTasks.push(ele);
+      }
+    });
+  }
+
+  return weekTasks;
 }

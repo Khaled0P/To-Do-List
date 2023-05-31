@@ -17,6 +17,12 @@ export function cancelForm(button, form, addTask) {
 //remove on click behavior
 export function removeOnClick(btn) {
   btn.addEventListener('click', function () {
+    const parent = document.querySelector('.inBox');
+    let parentArr = Array.from(parent.children);
+    let index = parentArr.indexOf(this.parentNode);
+    let inBoxData = JSON.parse(localStorage.getItem('taskDatabase'));
+    inBoxData.splice(index, 1);
+    localStorage.setItem('taskDatabase', JSON.stringify(inBoxData));
     this.parentNode.remove();
   });
 }

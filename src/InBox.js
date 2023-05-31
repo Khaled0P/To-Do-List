@@ -1,15 +1,15 @@
-// import './styles/styles.css';
+import { declareDatabase } from './localStorageProps';
 
-export default function InBox() {
-  const inBoxData = [];
+export default function inBox() {
+  let inBoxData = declareDatabase();
   const inBox = document.createElement('div');
   inBox.classList.add('inBox');
-
-  const addTask = document.createElement('button');
-  addTask.classList.add('addTaskBtn');
-  addTask.innerHTML =
-    '<i class="fas fa-plus" aria-hidden="true"></i> Add project';
-  inBox.appendChild(addTask);
-
   return { inBox, inBoxData };
+}
+
+export function today() {
+  const todayDatabase = [];
+  const today = document.createElement('div');
+  today.classList.add('today');
+  return { today, todayDatabase };
 }

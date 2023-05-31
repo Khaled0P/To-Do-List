@@ -4,9 +4,9 @@ import Task from './tasksComponent';
 import inBox, { today, todayDatabase } from './InBox';
 import addData, { displayTasks, getFirstChild } from './addData';
 import { cancelForm } from './remove';
-import localStorageTasks from './localStorageProps';
+import localStorageTasks, { todayTasks } from './localStorageProps';
 import parseISO from 'date-fns/parseISO';
-import { todayTasks } from './localStorageProps';
+import { switchTab } from './switchTabs';
 
 const logo = document.querySelector('.logo');
 logo.src = logoImage;
@@ -75,16 +75,6 @@ cancelForm(cancelBtn, form, addTask);
 
 //today tab display
 todayBtn.addEventListener('click', () => {
-  const todayContainer = today().today;
-  projects.forEach((project) => {
-    project.classList.remove('active');
-  });
-  todayBtn.classList.add('active');
-  getFirstChild(tasksContainer).remove();
-  let todayCurrentTasks = todayTasks();
-  todayCurrentTasks.forEach((task) => {
-    task = addData(task);
-    todayContainer.appendChild(displayTasks(task));
-  });
-  tasksContainer.insertBefore(todayContainer, addTask);
+  let switchToTab = switchTab.bind(todayBtn);
+  switchToTab(today(), projects, tasksContainer, todayTasks(), addTask);
 });

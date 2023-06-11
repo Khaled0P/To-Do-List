@@ -1,10 +1,10 @@
 //task remove button
-export default function addRemoveBtn(container) {
+export default function addRemoveBtn(container, parent, database) {
   const removeBtn = document.createElement('input');
   removeBtn.type = 'radio';
   removeBtn.classList.add('removeBtn');
   container.appendChild(removeBtn);
-  removeOnClick(removeBtn);
+  removeOnClick(removeBtn, parent, database);
 }
 
 export function cancelForm(button, form, addTask) {
@@ -15,14 +15,13 @@ export function cancelForm(button, form, addTask) {
 }
 
 //remove on click behavior
-export function removeOnClick(btn) {
+export function removeOnClick(btn, parent, database) {
   btn.addEventListener('click', function () {
-    const parent = document.querySelector('.inBox');
     let parentArr = Array.from(parent.children);
     let index = parentArr.indexOf(this.parentNode);
-    let inBoxData = JSON.parse(localStorage.getItem('taskDatabase'));
+    let inBoxData = JSON.parse(localStorage.getItem(database));
     inBoxData.splice(index, 1);
-    localStorage.setItem('taskDatabase', JSON.stringify(inBoxData));
+    localStorage.setItem(database, JSON.stringify(inBoxData));
     this.parentNode.remove();
   });
 }

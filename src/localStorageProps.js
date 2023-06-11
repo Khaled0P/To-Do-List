@@ -10,15 +10,22 @@ export default function localStorageTasks() {
   }
 }
 
-//load up local storage content or empty array if no content
-export function declareDatabase() {
-  let database;
-  if (localStorage.getItem('taskDatabase')) {
-    database = JSON.parse(localStorage.getItem('taskDatabase'));
+export function localStorageProjects() {
+  if (localStorage.getItem('projects')) {
+    const projects = JSON.parse(localStorage.getItem('projectss'));
+    return projects;
   } else {
-    database = [];
+    return [];
   }
-  return database;
+}
+
+//load up local storage content or empty array if no content
+export function declareDatabase(database) {
+  if (localStorage.getItem(database)) {
+    return JSON.parse(localStorage.getItem(database));
+  } else {
+    return [];
+  }
 }
 
 export function todayTasks() {

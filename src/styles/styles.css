@@ -61,6 +61,10 @@ header h1 {
     margin-bottom: .8em;
 }
 
+.currentProjects {
+    width: 100%;
+}
+
 .projectBtn,
 .addTaskBtn {
     margin: 5px;
@@ -143,4 +147,36 @@ form button:hover {
     background-color: rgb(255, 255, 255);
     border: .1px solid black;
     border-radius: 50%;
+}
+
+/************* User Projects ************/
+
+#projectForm {
+    text-align: center;
+}
+
+#projectForm input {
+    width: 80%;
+}
+
+
+.projectBtn {
+    position: relative;
+}
+
+.userProjects .removeBtn {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: black;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
 }

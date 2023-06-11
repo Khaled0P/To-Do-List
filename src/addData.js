@@ -20,13 +20,13 @@ export default function addData(newTask) {
   return taskElement;
 }
 
-export function displayTasks(data) {
+export function displayTasks(data, parent, database) {
   const taskContainer = document.createElement('div');
   const priority = data.pop();
 
   taskContainer.innerHTML = data.join('');
   taskContainer.classList.add('card');
-  addRemoveBtn(taskContainer);
+  addRemoveBtn(taskContainer, parent, database);
   setBackGround(priority, taskContainer);
 
   return taskContainer;
@@ -51,4 +51,14 @@ export function getFirstChild(el) {
     firstChild = firstChild.nextSibling;
   }
   return firstChild;
+}
+
+//User projects
+
+export function addNewProject(name, parent, database) {
+  const newProjectBtn = document.createElement('div');
+  newProjectBtn.innerHTML = `<i class="fa-solid fa-rectangle-list"></i> ${name}`;
+  newProjectBtn.classList.add('projectBtn');
+  addRemoveBtn(newProjectBtn, parent, database);
+  return newProjectBtn;
 }

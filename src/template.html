@@ -30,18 +30,24 @@
           </button>
         </div>
         <!-- User Projects -->
-        <div class="userProjects">
+        <section class="userProjects">
           <h1>Projects</h1>
+          <div class="currentProjects"></div>
           <button class="projectBtn" id="addProject">
             <i class="fas fa-plus" aria-hidden="true"></i> Add project
           </button>
-        </div>
+          <form id="projectForm">
+            <input type="text" id="projectName" placeholder="Project Name" />
+            <button type="button" id="submitProject">Add Project</button>
+            <button type="button" id="cancelProject">Cancel</button>
+          </form>
+        </section>
       </section>
       <section class="tasksContainer" id="tasksContainer">
         <button class="addTaskBtn">
           <i class="fas fa-plus" aria-hidden="true"></i> Add project
         </button>
-        <form>
+        <form class="taskForm">
           <input type="text" id="title" placeholder="Task title" />
           <input type="text" id="description" placeholder="description" />
           <input type="date" id="date" placeholder="date" />

@@ -1,7 +1,7 @@
 import { declareDatabase } from './localStorageProps';
 
 export default function inBox() {
-  let inBoxData = declareDatabase();
+  let inBoxData = declareDatabase('taskDatabase');
   const inBox = document.createElement('div');
   inBox.classList.add('inBox');
   return { inBox, inBoxData };

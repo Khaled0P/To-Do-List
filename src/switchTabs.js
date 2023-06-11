@@ -1,7 +1,15 @@
 import { getFirstChild } from './addData';
 import addData, { displayTasks } from './addData';
 
-export function switchTab(tab, projects, parentContainer, tasks, addTask) {
+export function switchTab(
+  tab,
+  projects,
+  parentContainer,
+  tasks,
+  addTask,
+  parent,
+  database
+) {
   const currentContainer = Object.values(tab)[0];
   //remove active class from active tab and add it to clicked tab
   projects.forEach((project) => {
@@ -14,7 +22,7 @@ export function switchTab(tab, projects, parentContainer, tasks, addTask) {
   let currentTasks = tasks;
   currentTasks.forEach((task) => {
     task = addData(task);
-    currentContainer.appendChild(displayTasks(task));
+    currentContainer.appendChild(displayTasks(task, parent, database));
   });
   parentContainer.insertBefore(currentContainer, addTask);
 }

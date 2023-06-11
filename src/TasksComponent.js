@@ -6,3 +6,10 @@ export default class Task {
     this.priority = priority;
   }
 }
+
+export class Project {
+  constructor(name, database) {
+    this.name = name;
+    this.database = database;
+  }
+}

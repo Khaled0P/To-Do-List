@@ -9,7 +9,7 @@
       src="https://kit.fontawesome.com/172eafd941.js"
       crossorigin="anonymous"
     ></script>
-  <script defer src="bundle42ba6e124a0a9415038b.js"></script></head>
+  <script defer src="bundled05f7128239e1dcdc8fa.js"></script></head>
   <body>
     <header>
       <img class="logo" src="" alt="to do logo" />
@@ -30,18 +30,24 @@
           </button>
         </div>
         <!-- User Projects -->
-        <div class="userProjects">
+        <section class="userProjects">
           <h1>Projects</h1>
+          <div class="currentProjects"></div>
           <button class="projectBtn" id="addProject">
             <i class="fas fa-plus" aria-hidden="true"></i> Add project
           </button>
-        </div>
+          <form id="projectForm">
+            <input type="text" id="projectName" placeholder="Project Name" />
+            <button type="button" id="submitProject">Add Project</button>
+            <button type="button" id="cancelProject">Cancel</button>
+          </form>
+        </section>
       </section>
       <section class="tasksContainer" id="tasksContainer">
         <button class="addTaskBtn">
           <i class="fas fa-plus" aria-hidden="true"></i> Add project
         </button>
-        <form>
+        <form class="taskForm">
           <input type="text" id="title" placeholder="Task title" />
           <input type="text" id="description" placeholder="description" />
           <input type="date" id="date" placeholder="date" />

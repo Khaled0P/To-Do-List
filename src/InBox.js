@@ -17,6 +17,12 @@ export function today() {
 export function thisWeek() {
   const weekDatabase = [];
   const thisWeek = document.createElement('div');
-  thisWeek.classList.add('today');
+  thisWeek.classList.add('thisWeek');
   return { thisWeek, weekDatabase };
+}
+
+export function userProject(name) {
+  const project = document.createElement('div');
+  project.classList.add(name);
+  return project;
 }

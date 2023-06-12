@@ -8,15 +8,17 @@ import localStorageTasks, {
   thisWeekTasks,
   todayTasks,
   declareDatabase,
+  localStorageProjects,
 } from './localStorageProps';
 import parseISO from 'date-fns/parseISO';
 import { switchTab } from './switchTabs';
+import currentUserProject from './userProjects';
 
 const logo = document.querySelector('.logo');
 logo.src = logoImage;
 
 //tasks tabs
-const projectsBtn = document.querySelectorAll('.projectBtn');
+const projectsBtn = document.getElementsByClassName('projectBtn');
 const inBoxBtn = document.getElementById('inbox');
 const todayBtn = document.getElementById('today');
 const thisWeekBtn = document.getElementById('thisWeek');
@@ -40,12 +42,15 @@ const addProjectForm = document.getElementById('projectForm');
 const projectname = document.getElementById('projectName');
 const submitProjectBtn = document.getElementById('submitProject');
 const cancelProjectBtn = document.getElementById('cancelProject');
+const userProjects = document.getElementsByClassName('userProjectBtn');
 
 const inBoxContainer = inBox().inBox;
 tasksContainer.insertBefore(inBoxContainer, addTask);
 
 //databases
 let currentDatabase = inBox().inBoxData;
+let currentDatabaseName = 'taskDatabase';
+let currentContainer = inBoxContainer;
 const projectsDatabase = declareDatabase('projectsBtn');
 
 addTask.addEventListener('click', () => {
@@ -83,11 +88,11 @@ taskBtn.addEventListener('click', function () {
   currentDatabase.push(task);
   const taskElement = addData(task);
 
-  localStorage.setItem('taskDatabase', JSON.stringify(currentDatabase));
+  localStorage.setItem(currentDatabaseName, JSON.stringify(currentDatabase));
 
   //display task on page
-  inBoxContainer.appendChild(
-    displayTasks(taskElement, inBoxContainer, 'taskDatabase')
+  currentContainer.appendChild(
+    displayTasks(taskElement, currentContainer, currentDatabaseName)
   );
   taskForm.style.display = 'none';
   addTask.style.display = 'block';
@@ -103,40 +108,46 @@ cancelForm(cancelBtn, taskForm, addTask);
 
 //InBox tab display
 inBoxBtn.addEventListener('click', () => {
+  currentContainer = inBoxContainer;
+  currentDatabase = inBox().inBoxData;
+  currentDatabaseName = 'taskDatabase';
   let switchToInBox = switchTab.bind(inBoxBtn);
   switchToInBox(
-    inBox(),
+    inBoxContainer,
     projectsBtn,
     tasksContainer,
     localStorageTasks(),
     addTask,
-    inBoxContainer,
     'taskDatabase'
   );
 });
 //today tab display
 todayBtn.addEventListener('click', () => {
+  currentContainer = inBoxContainer;
+  currentDatabase = inBox().inBoxData;
+  currentDatabaseName = 'taskDatabase';
   let switchToTab = switchTab.bind(todayBtn);
   switchToTab(
-    today(),
+    today().today,
     projectsBtn,
     tasksContainer,
     todayTasks(),
     addTask,
-    inBoxContainer,
     'taskDatabase'
   );
 });
 //week tab display
 thisWeekBtn.addEventListener('click', () => {
+  currentContainer = inBoxContainer;
+  currentDatabase = inBox().inBoxData;
+  currentDatabaseName = 'taskDatabase';
   let switchToTab = switchTab.bind(thisWeekBtn);
   switchToTab(
-    thisWeek(),
+    thisWeek().thisWeek,
     projectsBtn,
     tasksContainer,
     thisWeekTasks(),
     addTask,
-    inBoxContainer,
     'taskDatabase'
   );
 });
@@ -150,17 +161,49 @@ addProjectBtn.addEventListener('click', () => {
 //cancel projectsBtn form
 cancelForm(cancelProjectBtn, addProjectForm, addProjectBtn);
 
+//change active database to clicked project
+function customProjectOnClick(project) {
+  project.addEventListener('click', () => {
+    const projectContainer = document.createElement('div');
+    let currentProject = currentUserProject.bind(project);
+    let switchToTab = switchTab.bind(project);
+    currentDatabaseName = project.textContent;
+    localStorage.getItem(currentDatabaseName)
+      ? (currentDatabase = JSON.parse(
+          localStorage.getItem(currentDatabaseName)
+        ))
+      : (currentDatabase = currentProject(projectsContainer).database);
+    currentContainer = projectContainer;
+    switchToTab(
+      projectContainer,
+      projectsBtn,
+      tasksContainer,
+      currentDatabase,
+      addTask,
+      currentDatabaseName
+    );
+  });
+}
+
 submitProjectBtn.addEventListener('click', () => {
   const project = new Project(projectname.value, []);
-
   //store project in local storage and display on page
   projectsDatabase.push(project);
   localStorage.setItem('projects', JSON.stringify(projectsDatabase));
-  projectsContainer.appendChild(
-    addNewProject(project.name, projectsContainer, 'projects')
+  const displayedProject = addNewProject(
+    project.name,
+    projectsContainer,
+    'projects'
   );
+  projectsContainer.appendChild(displayedProject);
+  customProjectOnClick(displayedProject);
 
   //remove form when done
   addProjectForm.style.display = 'none';
   addProjectBtn.style.display = 'block';
+});
+
+//change active database to clicked project
+[...userProjects].forEach((project) => {
+  customProjectOnClick(project);
 });

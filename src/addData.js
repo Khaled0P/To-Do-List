@@ -58,7 +58,7 @@ export function getFirstChild(el) {
 export function addNewProject(name, parent, database) {
   const newProjectBtn = document.createElement('div');
   newProjectBtn.innerHTML = `<i class="fa-solid fa-rectangle-list"></i> ${name}`;
-  newProjectBtn.classList.add('projectBtn');
+  newProjectBtn.classList.add('userProjectBtn', 'projectBtn');
   addRemoveBtn(newProjectBtn, parent, database);
   return newProjectBtn;
 }
